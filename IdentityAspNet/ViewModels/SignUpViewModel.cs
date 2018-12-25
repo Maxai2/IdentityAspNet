@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Identity.ViewModels
+namespace IdentityAspNet.ViewModels
 {
     public class SignUpViewModel
     {

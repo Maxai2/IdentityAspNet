@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Identity.ViewModels;
-using Identity.Models;
+using IdentityAspNet.ViewModels;
+using IdentityAspNet.Models;
 
-namespace Identity.Controllers
+namespace IdentityAspNet.Controllers
 {
     public class AccountController : Controller
     {
@@ -64,8 +64,15 @@ namespace Identity.Controllers
 
                 return View(model);
             }
-
-            return View();
         }
+
+        [HttpGet]
+        public IActionResult SignIn()
+        {
+            return View(new SignInViewModel());
+        }
+
+        [HttpPost]
+        public
     }
 }
