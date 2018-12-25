@@ -73,6 +73,14 @@ namespace IdentityAspNet.Controllers
         }
 
         [HttpPost]
-        public
+        public IActionResult SignIn(SignInViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            //var user = userManager.Users.FirstOrDefault(u => u.Email == model.Email)
+        }
     }
 }

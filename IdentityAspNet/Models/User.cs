@@ -11,13 +11,7 @@ namespace IdentityAspNet.Models
     public class User : IdentityUser
     {
         public int Gender { get; set; }
-
+        public DateTime Birthday { get; set; }
+        public string FullName { get; set; }
     }
-
-    //public enum GenderEnum
-    //{
-    //    Male = 1,
-    //    Female = 2,
-    //    Undefined = 3
-    //}
 }

@@ -36,10 +36,10 @@ namespace IdentityAspNet
                 options.LoginPath = "/Account/SignUp";
             });
 
-            //services.Configure<IdentityOptions>(opts =>
-            //{
-            //    opts.Password.
-            //});
+            services.Configure<IdentityOptions>(opts =>
+            {
+                opts.Password.RequiredLength = 5;
+            });
 
             services.AddMvc();
         }
