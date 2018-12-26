@@ -1,0 +1,22 @@
+﻿@model SignInViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>SignIn</h4>
+
+<form method="post">
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <input type="submit" value="Sign In" />
+    </div>
+</form>

@@ -39,6 +39,7 @@ namespace IdentityAspNet
             services.Configure<IdentityOptions>(opts =>
             {
                 opts.Password.RequiredLength = 5;
+                opts.Password.RequiredUniqueChars = 4;
             });
 
             services.AddMvc();

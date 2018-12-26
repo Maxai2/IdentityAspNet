@@ -7,20 +7,37 @@
 
 <form method="post">
     <div>
+        <label asp-for="FullName"></label>
+        <input asp-for="FullName" placeholder="Name Surname" />
+        <span asp-validation-for="FullName"></span>
+    </div>
+    <div>
         <label asp-for="Email"></label>
-        <input asp-for="Email" />
+        <input asp-for="Email" placeholder="email" />
         <span asp-validation-for="Email"></span>
     </div>
     <div>
         <label asp-for="Pswd"></label>
-        <input asp-for="Pswd" />
+        <input asp-for="Pswd" placeholder="password" />
         <span asp-validation-for="Pswd"></span>
     </div>
     <div>
         <label asp-for="Repeat"></label>
-        <input asp-for="Repeat" />
+        <input asp-for="Repeat" placeholder="password" />
         <span asp-validation-for="Repeat"></span>
     </div>
+    <div>
+        <label asp-for="Birthday"></label>
+        <input asp-for="Birthday" />
+        <span asp-validation-for="Birthday"></span>
+    </div>
+    <div>
+        <label asp-for="Gender"></label>
+        <input asp-for="Gender" placeholder="password" />
+        <span asp-validation-for="Gender"></span>
+    </div>
+
+
     <div>
         <input type="submit" value="Register" />
     </div>

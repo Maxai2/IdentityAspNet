@@ -13,11 +13,13 @@ namespace IdentityAspNet.Controllers
     {
         private UserManager<User> userManager;
         private SignInManager<User> signInManager;
+        private SignOutResult signOutManager;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, SignOutResult signOutManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.signOutManager = signOutManager;
         }
 
         [HttpGet]
@@ -73,14 +75,31 @@ namespace IdentityAspNet.Controllers
         }
 
         [HttpPost]
-        public IActionResult SignIn(SignInViewModel model)
+        public async IActionResult SignIn(SignInViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            //var user = userManager.Users.FirstOrDefault(u => u.Email == model.Email)
+            var user = await userManager.Fin
+
+            if (user != null)
+            {
+                await signInManager.SignInAsync(user, true);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(model);
+            }
+        }
+
+        [HttpGet]
+        public void SignOut()
+        {
+            signOutManager.
         }
     }
 }
