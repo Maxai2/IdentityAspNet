@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using IdentityAspNet.ViewModels;
 using IdentityAspNet.Models;
+using System.Net;
 
 namespace IdentityAspNet.Controllers
 {
@@ -13,13 +14,11 @@ namespace IdentityAspNet.Controllers
     {
         private UserManager<User> userManager;
         private SignInManager<User> signInManager;
-        private SignOutResult signOutManager;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, SignOutResult signOutManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
-            this.signOutManager = signOutManager;
         }
 
         [HttpGet]
@@ -45,8 +44,10 @@ namespace IdentityAspNet.Controllers
 
             User user = new User()
             {
+                Birthday = model.Birthday,
                 Email = model.Email,
-                UserName = model.Email
+                FullName = model.FullName,
+                Gender = model.Gender
             };
 
             IdentityResult res = await userManager.CreateAsync(user, model.Pswd);
@@ -75,14 +76,14 @@ namespace IdentityAspNet.Controllers
         }
 
         [HttpPost]
-        public async IActionResult SignIn(SignInViewModel model)
+        public async Task<IActionResult> SignIn(SignInViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            var user = await userManager.Fin
+            var user = await userManager.FindByEmailAsync(model.Email);
 
             if (user != null)
             {
@@ -99,7 +100,7 @@ namespace IdentityAspNet.Controllers
         [HttpGet]
         public void SignOut()
         {
-            signOutManager.
+            AuthenticationManager.SignOut();
         }
     }
 }

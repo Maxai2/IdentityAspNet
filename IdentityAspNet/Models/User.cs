@@ -10,7 +10,7 @@ namespace IdentityAspNet.Models
 {
     public class User : IdentityUser
     {
-        public int Gender { get; set; }
+        public bool Gender { get; set; }
         public DateTime Birthday { get; set; }
         public string FullName { get; set; }
     }
