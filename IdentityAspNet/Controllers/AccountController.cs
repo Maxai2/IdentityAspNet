@@ -83,7 +83,7 @@ namespace IdentityAspNet.Controllers
                 return View(model);
             }
 
-            var user = await userManager.FindByEmailAsync(model.Email);
+            var user = userManager.Users.FirstOrDefault(u => u.Email == model.Email && u.PasswordHash == model.Password);
 
             if (user != null)
             {
@@ -98,9 +98,10 @@ namespace IdentityAspNet.Controllers
         }
 
         [HttpGet]
-        public void SignOut()
+        public IActionResult SignOut()
         {
-            AuthenticationManager.SignOut();
+            signInManager.SignOutAsync();
+            return RedirectToAction("Index");
         }
     }
 }
