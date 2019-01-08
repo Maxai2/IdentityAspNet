@@ -83,7 +83,8 @@ namespace IdentityAspNet.Controllers
                 return View(model);
             }
 
-            var user = userManager.Users.FirstOrDefault(u => u.Email == model.Email && u.PasswordHash == model.Password);
+            var user = userManager.FindByEmailAsync(;
+            var user = userManager.ChangePasswordAsync(;
 
             if (user != null)
             {
